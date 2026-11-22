@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Japanese Recipes — Home</title>
+<meta name="description" content="Simple Japanese recipes and kitchen tools: sushi, ramen, miso soup, tempura, and teriyaki for home cooks.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<style>
+body{font-family:Georgia,'Times New Roman',serif;color:#1a1a1a;background:#ffffff;margin:0;line-height:1.7}
+header{border-bottom:1px solid #e5e5e5;padding:28px 20px 18px;text-align:center}
+header a{color:#1a1a1a;text-decoration:none}
+.site-title{font-size:32px;letter-spacing:2px;margin:0;font-weight:400}
+.site-title span{color:#b91c1c}
+.tagline{color:#666;font-size:15px;margin:6px 0 0;font-family:Arial,Helvetica,sans-serif}
+nav{padding:12px 20px;text-align:center;border-bottom:1px solid #eee;font-family:Arial,Helvetica,sans-serif;font-size:14px}
+nav a{color:#444;text-decoration:none;margin:0 12px}
+nav a:hover{color:#b91c1c}
+main{max-width:720px;margin:0 auto;padding:28px 20px 60px}
+h1{font-size:30px;line-height:1.3;font-weight:400}
+h2{font-size:22px;border-bottom:1px solid #eee;padding-bottom:6px;margin-top:36px;font-weight:400}
+h3{font-size:18px;margin-top:24px}
+p,li{font-size:17px}
+a{color:#b91c1c}
+.hero{padding:20px 0 8px;text-align:center}
+.hero p{font-size:18px;color:#555}
+.tool{background:#f7f7f7;border:1px solid #e5e5e5;border-radius:6px;padding:20px;margin:22px 0}
+.tool h3{margin-top:0;font-family:Arial,Helvetica,sans-serif}
+label{display:block;font-family:Arial,Helvetica,sans-serif;font-size:14px;margin:10px 0 4px}
+input,select{width:100%;max-width:340px;padding:9px;border:1px solid #ccc;border-radius:4px;font-size:15px;box-sizing:border-box}
+button{background:#b91c1c;color:#fff;border:none;padding:10px 20px;border-radius:4px;font-size:15px;cursor:pointer;margin-top:12px;font-family:Arial,Helvetica,sans-serif}
+button:hover{background:#991b1b}
+.result{margin-top:12px;font-family:Arial,Helvetica,sans-serif;font-size:15px;background:#fff;border-left:3px solid #b91c1c;padding:10px 12px}
+.guide-list{list-style:none;padding:0}
+.guide-list li{border-bottom:1px solid #eee;padding:14px 0}
+.guide-list a{font-size:19px;text-decoration:none}
+.guide-list p{color:#666;font-size:15px;margin:4px 0 0}
+footer{border-top:1px solid #eee;text-align:center;color:#888;font-size:13px;font-family:Arial,Helvetica,sans-serif;padding:24px 20px}
+footer a{color:#888}
+table{border-collapse:collapse;width:100%;font-family:Arial,Helvetica,sans-serif;font-size:14px}
+th,td{border:1px solid #ddd;padding:8px;text-align:left}
+th{background:#f0f0f0}
+@media(max-width:600px){.site-title{font-size:26px}h1{font-size:25px}main{padding:20px 16px 48px}}
+</style>
+</head>
+<body>
+<header><a href="index.html"><p class="site-title">JAPANESE <span>RECIPES</span></p></a><p class="tagline">Simple, honest Japanese home cooking</p></header>
+<nav><a href="index.html">Home</a><a href="guides/sushi-at-home.html">Sushi</a><a href="guides/ramen.html">Ramen</a><a href="guides/miso-soup.html">Miso Soup</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+<main><div class="hero"><h1>Japanese cooking, made simple</h1><p>Original recipes and practical guides for sushi, ramen, miso soup, and everyday Japanese home cooking — with tools that do the measuring for you.</p></div>
+
+<h2>Kitchen Tools</h2>
+<p>Five small tools to help with everyday Japanese cooking. Everything runs in your browser; nothing is uploaded.</p>
+
+<div class="tool"><h3>1. Recipe Finder</h3>
+<p>Type a word or pick a category to filter the recipes below.</p>
+<label for="rf-q">Search recipes</label>
+<input id="rf-q" type="text" placeholder="e.g. salmon, noodles, soup" oninput="filterRecipes()">
+<label for="rf-cat">Category</label>
+<select id="rf-cat" onchange="filterRecipes()"><option value="">All categories</option><option>rice</option><option>noodles</option><option>soup</option><option>grilled</option><option>fried</option></select>
+<ul id="rf-list">
+<li data-cat="rice">Sushi rice bowls — rice — 25 min — easy</li>
+<li data-cat="noodles">Shoyu ramen — noodles — 45 min — medium</li>
+<li data-cat="soup">Miso soup with tofu — soup — 15 min — easy</li>
+<li data-cat="fried">Chicken tempura — fried — 30 min — medium</li>
+<li data-cat="grilled">Teriyaki salmon — grilled — 20 min — easy</li>
+<li data-cat="rice">Onigiri rice balls — rice — 20 min — easy</li>
+<li data-cat="noodles">Cold soba with dipping sauce — noodles — 20 min — easy</li>
+<li data-cat="soup">Clear dashi soup with mushrooms — soup — 20 min — easy</li>
+</ul>
+<p id="rf-none" class="result" style="display:none">No recipes match. Try a different word or category.</p></div>
+
+<div class="tool"><h3>2. Serving Scaler</h3>
+<p>Scale a recipe up or down. Enter the original servings, the servings you want, and one ingredient amount.</p>
+<label for="sc-orig">Original servings</label><input id="sc-orig" type="number" min="1" value="4">
+<label for="sc-want">Servings you want</label><input id="sc-want" type="number" min="1" value="2">
+<label for="sc-amt">Ingredient amount (grams or ml)</label><input id="sc-amt" type="number" min="0" value="400">
+<button onclick="scaleRecipe()">Scale it</button>
+<p id="sc-out" class="result">Scaled amount will appear here.</p></div>
+
+<div class="tool"><h3>3. Rice and Water Ratio Calculator</h3>
+<p>Short-grain Japanese rice cooks best at a rice-to-water ratio of 1 to 1.2 by volume. Rinse the rice until the water runs mostly clear, then soak it for 30 minutes before cooking.</p>
+<label for="rw-rice">Cups of uncooked short-grain rice</label><input id="rw-rice" type="number" min="0.5" step="0.5" value="2">
+<button onclick="riceWater()">Calculate water</button>
+<p id="rw-out" class="result">Water needed will appear here.</p></div>
+
+<div class="tool"><h3>4. Dashi Stock Guide</h3>
+<p>Basic awase dashi uses kombu and bonito flakes. The guide below scales a standard base of 1 litre of water with 10 g kombu and 20 g bonito flakes.</p>
+<label for="da-water">Water (ml)</label><input id="da-water" type="number" min="100" step="50" value="1000">
+<button onclick="dashiCalc()">Calculate dashi</button>
+<p id="da-out" class="result">Dashi amounts will appear here.</p></div>
+
+<div class="tool"><h3>5. Sushi Rice Calculator</h3>
+<p>One cup of uncooked short-grain rice makes about 3 cups of cooked rice. Seasoned sushi rice uses about 1 tablespoon of sushi vinegar per cup of cooked rice.</p>
+<label for="sr-cups">Cups of uncooked rice</label><input id="sr-cups" type="number" min="0.5" step="0.5" value="2">
+<button onclick="sushiRice()">Calculate seasoning</button>
+<p id="sr-out" class="result">Seasoning amounts will appear here.</p></div>
+
+<script>
+function filterRecipes(){
+  var q=document.getElementById('rf-q').value.toLowerCase();
+  var cat=document.getElementById('rf-cat').value;
+  var items=document.querySelectorAll('#rf-list li'); var shown=0;
+  items.forEach(function(li){
+    var ok=(!q||li.textContent.toLowerCase().indexOf(q)>-1)&&(!cat||li.getAttribute('data-cat')===cat);
+    li.style.display=ok?'':'none'; if(ok)shown++;
+  });
+  document.getElementById('rf-none').style.display=shown?'none':'block';
+}
+function scaleRecipe(){
+  var o=parseFloat(document.getElementById('sc-orig').value), w=parseFloat(document.getElementById('sc-want').value), a=parseFloat(document.getElementById('sc-amt').value);
+  var out=document.getElementById('sc-out');
+  if(!(o>0)||!(w>0)||isNaN(a)){out.textContent='Please enter valid numbers for all three fields.';return;}
+  var scaled=a*w/o;
+  out.textContent='For '+w+' servings instead of '+o+', use '+scaled.toFixed(1)+' (same unit as the original amount). Scale factor: '+(w/o).toFixed(2)+'x.';
+}
+function riceWater(){
+  var r=parseFloat(document.getElementById('rw-rice').value);
+  var out=document.getElementById('rw-out');
+  if(!(r>0)){out.textContent='Please enter a rice amount greater than zero.';return;}
+  out.textContent=r+' cup(s) of rice needs '+(r*1.2).toFixed(2)+' cups of water (ratio 1 : 1.2). That is about '+Math.round(r*1.2*240)+' ml of water.';
+}
+function dashiCalc(){
+  var w=parseFloat(document.getElementById('da-water').value);
+  var out=document.getElementById('da-out');
+  if(!(w>0)){out.textContent='Please enter a water amount greater than zero.';return;}
+  var kombu=(w/1000*10).toFixed(1), bonito=(w/1000*20).toFixed(1);
+  out.textContent='For '+w+' ml water: '+kombu+' g dried kombu and '+bonito+' g bonito flakes. Soak kombu in the water for 30 minutes, heat gently without boiling, remove kombu, add bonito, simmer briefly, then strain.';
+}
+function sushiRice(){
+  var c=parseFloat(document.getElementById('sr-cups').value);
+  var out=document.getElementById('sr-out');
+  if(!(c>0)){out.textContent='Please enter a rice amount greater than zero.';return;}
+  var cooked=c*3, vin=cooked*1, sugar=cooked*1, salt=cooked*0.5;
+  out.textContent=c+' cup(s) uncooked makes about '+cooked.toFixed(1)+' cups cooked rice. Season with '+vin.toFixed(1)+' tbsp rice vinegar, '+sugar.toFixed(1)+' tsp sugar, and '+salt.toFixed(1)+' tsp salt, mixed and folded in while the rice is hot.';
+}
+</script>
+
+<h2>Guides</h2><ul class="guide-list"><li><a href="guides/sushi-at-home.html"><img src="images/sushi-at-home.jpg" alt="Sushi at Home — A Beginner's Guide" style="width:100%;height:auto;border-radius:6px"></a><a href="guides/sushi-at-home.html">Sushi at Home — A Beginner's Guide</a><p>Learn to make sushi rice, shape nigiri and roll maki at home with simple equipment and fresh ingredients.</p></li>
+<li><a href="guides/ramen.html"><img src="images/ramen.jpg" alt="Ramen at Home — Broth, Noodles and Toppings" style="width:100%;height:auto;border-radius:6px"></a><a href="guides/ramen.html">Ramen at Home — Broth, Noodles and Toppings</a><p>A practical guide to homemade ramen: broth choices, noodle cooking, toppings, and how to build a satisfying bowl.</p></li>
+<li><a href="guides/miso-soup.html"><img src="images/miso-soup.jpg" alt="Miso Soup — The Everyday Japanese Soup" style="width:100%;height:auto;border-radius:6px"></a><a href="guides/miso-soup.html">Miso Soup — The Everyday Japanese Soup</a><p>How to make miso soup properly: dashi, miso choice, classic ingredients, and the mistakes to avoid.</p></li>
+<li><a href="guides/tempura.html"><img src="images/tempura.jpg" alt="Tempura — Light, Crisp Japanese Frying" style="width:100%;height:auto;border-radius:6px"></a><a href="guides/tempura.html">Tempura — Light, Crisp Japanese Frying</a><p>How to make light, crisp tempura at home: batter, oil temperature, ingredient preparation, and dipping sauce.</p></li>
+<li><a href="guides/teriyaki.html"><img src="images/teriyaki.jpg" alt="Teriyaki — The Sweet-Savoury Japanese Glaze" style="width:100%;height:auto;border-radius:6px"></a><a href="guides/teriyaki.html">Teriyaki — The Sweet-Savoury Japanese Glaze</a><p>How to make teriyaki sauce from scratch and use it on chicken, salmon, and tofu without burning the glaze.</p></li>
+<li><a href="guides/japanese-home-cooking.html"><img src="images/japanese-home-cooking.jpg" alt="Japanese Home Cooking — Everyday Meals the Ichiju-Sansai Way" style="width:100%;height:auto;border-radius:6px"></a><a href="guides/japanese-home-cooking.html">Japanese Home Cooking — Everyday Meals the Ichiju-Sansai Way</a><p>How everyday Japanese meals are built: one soup, three dishes, rice, and the habits that make them simple.</p></li>
+<li><a href="guides/udon.html"><img src="images/udon.jpg" alt="Udon Noodles — Thick, Chewy and Comforting" style="width:100%;height:auto;border-radius:6px"></a><a href="guides/udon.html">Udon Noodles — Thick, Chewy and Comforting</a><p>How to cook udon noodles properly, make a simple broth, and build classic bowls like kitsune and tempura udon.</p></li>
+<li><a href="guides/okonomiyaki.html"><img src="images/okonomiyaki.jpg" alt="Okonomiyaki — Japan's Savoury Pancake" style="width:100%;height:auto;border-radius:6px"></a><a href="guides/okonomiyaki.html">Okonomiyaki — Japan's Savoury Pancake</a><p>How to make okonomiyaki at home: batter, cabbage, toppings, and the sauces that make it special.</p></li>
+<li><a href="guides/tonkatsu.html"><img src="images/tonkatsu.jpg" alt="Tonkatsu — Crisp Japanese Pork Cutlet" style="width:100%;height:auto;border-radius:6px"></a><a href="guides/tonkatsu.html">Tonkatsu — Crisp Japanese Pork Cutlet</a><p>How to make tonkatsu with a light, crisp panko crust, plus tonkatsu sauce and serving ideas.</p></li>
+<li><a href="guides/yakitori.html"><img src="images/yakitori.jpg" alt="Yakitori — Japanese Grilled Chicken Skewers" style="width:100%;height:auto;border-radius:6px"></a><a href="guides/yakitori.html">Yakitori — Japanese Grilled Chicken Skewers</a><p>How to make yakitori at home: chicken cuts, tare sauce, skewering, and grilling without a charcoal grill.</p></li>
+<li><a href="guides/gyoza.html"><img src="images/gyoza.jpg" alt="Gyoza — Japanese Pan-Fried Dumplings" style="width:100%;height:auto;border-radius:6px"></a><a href="guides/gyoza.html">Gyoza — Japanese Pan-Fried Dumplings</a><p>How to make gyoza from scratch: filling, folding, frying, and the dipping sauce.</p></li>
+<li><a href="guides/onigiri.html"><img src="images/onigiri.jpg" alt="Onigiri — Japanese Rice Balls" style="width:100%;height:auto;border-radius:6px"></a><a href="guides/onigiri.html">Onigiri — Japanese Rice Balls</a><p>How to make onigiri: rice, fillings, shaping, and wrapping, plus the best fillings for beginners.</p></li>
+<li><a href="guides/japanese-curry.html"><img src="images/japanese-curry.jpg" alt="Japanese Curry — Rich, Mild and Comforting" style="width:100%;height:auto;border-radius:6px"></a><a href="guides/japanese-curry.html">Japanese Curry — Rich, Mild and Comforting</a><p>How to make Japanese curry at home: roux blocks, vegetables, protein, and serving it properly with rice.</p></li>
+<li><a href="guides/soba.html"><img src="images/soba.jpg" alt="Soba Noodles — Buckwheat Noodles, Hot and Cold" style="width:100%;height:auto;border-radius:6px"></a><a href="guides/soba.html">Soba Noodles — Buckwheat Noodles, Hot and Cold</a><p>How to cook soba noodles, make dipping sauce, and serve them hot in broth or cold with toppings.</p></li>
+<li><a href="guides/shabu-shabu.html"><img src="images/shabu-shabu.jpg" alt="Shabu-Shabu — Japanese Hot Pot at Home" style="width:100%;height:auto;border-radius:6px"></a><a href="guides/shabu-shabu.html">Shabu-Shabu — Japanese Hot Pot at Home</a><p>How to make shabu-shabu: broth, thinly sliced meat, vegetables, dipping sauces, and the finishing noodles.</p></li>
+<li><a href="guides/takoyaki.html"><img src="images/takoyaki.jpg" alt="Takoyaki — Osaka's Octopus Balls" style="width:100%;height:auto;border-radius:6px"></a><a href="guides/takoyaki.html">Takoyaki — Osaka's Octopus Balls</a><p>How to make takoyaki at home: batter, octopus, the special pan, and the sauces and toppings.</p></li>
+<li><a href="guides/matcha-desserts.html"><img src="images/matcha-desserts.jpg" alt="Matcha Desserts — Green Tea Sweets at Home" style="width:100%;height:auto;border-radius:6px"></a><a href="guides/matcha-desserts.html">Matcha Desserts — Green Tea Sweets at Home</a><p>How to use matcha in desserts: choosing good matcha, matcha ice cream, cakes, and drinks.</p></li>
+<li><a href="guides/japanese-breakfast.html"><img src="images/japanese-breakfast.jpg" alt="Japanese Breakfast — How to Start the Day the Japanese Way" style="width:100%;height:auto;border-radius:6px"></a><a href="guides/japanese-breakfast.html">Japanese Breakfast — How to Start the Day the Japanese Way</a><p>What a traditional Japanese breakfast looks like, and how to make a simple version at home on a weekday.</p></li>
+<li><a href="guides/bento-boxes.html"><img src="images/bento-boxes.jpg" alt="Bento Boxes — Packing a Japanese Lunch Box" style="width:100%;height:auto;border-radius:6px"></a><a href="guides/bento-boxes.html">Bento Boxes — Packing a Japanese Lunch Box</a><p>How to pack a bento box: balance, colour, food safety, and easy combinations for work or school.</p></li>
+<li><a href="guides/japanese-pickles.html"><img src="images/japanese-pickles.jpg" alt="Japanese Pickles — Tsukemono at Home" style="width:100%;height:auto;border-radius:6px"></a><a href="guides/japanese-pickles.html">Japanese Pickles — Tsukemono at Home</a><p>An introduction to Japanese pickles (tsukemono): salt pickles, miso pickles, and quick pickles you can make today.</p></li></ul></main>
+<footer><p>Japanese Recipes &middot; <a href="about.html">About</a> &middot; <a href="contact.html">Contact</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="disclaimer.html">Disclaimer</a></p></footer>
+</body>
+</html>
